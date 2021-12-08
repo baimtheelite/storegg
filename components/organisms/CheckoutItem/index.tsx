@@ -10,7 +10,6 @@ export default function CheckoutItem() {
   });
   useEffect(() => {
     const dataItemLocal = JSON.parse(localStorage.getItem("data-item")!);
-    console.log(dataItemLocal);
     setDataItem(dataItemLocal);
   }, []);
 

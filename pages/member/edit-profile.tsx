@@ -6,14 +6,22 @@ import Cookies from "js-cookie";
 import { JWTPayloadTypes, PlayerTypes } from "../../services/data-types";
 import jwtDecode from "jwt-decode";
 
+interface PlayerStateTypes {
+  id: string;
+  name: string;
+  email: string;
+  avatar: any
+}
+
 export default function EditProfile() {
-  const [player, setPlayer] = useState({
+  const [player, setPlayer] = useState<PlayerStateTypes>({
+    id: "",
     email: "",
     name: "",
-    phone: "",
+    // phone: "",
     avatar: "",
   });
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState("/");
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -80,7 +88,7 @@ export default function EditProfile() {
                 </div>
                 <div className="image-upload">
                   <label htmlFor="avatar">
-                    {imagePreview ? (
+                    {imagePreview === "/" ? (
                       <img
                         src={imagePreview}
                         width={90}
@@ -96,13 +104,13 @@ export default function EditProfile() {
                       />
                     )} 
                   </label>
-                  <input
+                  <Input
                     id="avatar"
                     type="file"
                     name="avatar"
                     accept="image/png, image/jpeg"
                     onChange={(e) => {
-                      const img = e.target.files[0];
+                      const img = e.target.files![0];
                       setImagePreview(URL.createObjectURL(img));
                       return setPlayer({ ...player, avatar: img });
                     }}
@@ -127,7 +135,7 @@ export default function EditProfile() {
                   label="Email Address"
                   placeholder="Enter Your Email Address"
                   value={player.email}
-                  disabled="disabled"
+                  disabled
                 />
               </div>
               {/* <div className="pt-30">

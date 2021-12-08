@@ -16,7 +16,7 @@ interface MenuItemProps {
 }
 
 export default function MenuItem(props: Partial<MenuItemProps>) {
-    const {title, icon, active, href, onClick} = props;
+    const {title, icon, active, href = '/', onClick } = props;
 
     const classItem = cx({
         'item': true,
@@ -34,7 +34,7 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
             {title}
           </a>
         ) : (
-          <Link href={href} onClick={onClick}>
+          <Link href={href}>
             <a className="text-lg text-decoration-none">
               {title}
             </a>

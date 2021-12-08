@@ -6,14 +6,15 @@ import NumberFormat from "react-number-format";
 interface TableRowProps {
     title: string,
     category: string,
-    item: number,
+    coinQuantity: number,
+    coinName: string,
     price: number,
     status: string,
     image: string,
 }
 
 export default function TableRow(props: TableRowProps) {
-    const {title, category, item, price, status, image} = props;
+    const {title, category, coinQuantity, coinName, price, status, image} = props;
     const statusClass = cx({
         "float-start icon-status pending": true,
         'pending': status === 'pending',
@@ -40,7 +41,7 @@ export default function TableRow(props: TableRowProps) {
         </div>
       </th>
       <td>
-        <p className="fw-medium color-palette-1 m-0">{item} Gold</p>
+        <p className="fw-medium color-palette-1 m-0">{coinQuantity} {coinName}</p>
       </td>
       <td>
         <p className="fw-medium text-start color-palette-1 m-0"> 

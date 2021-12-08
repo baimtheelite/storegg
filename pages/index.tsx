@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
-import AOS from 'aos'
 import Navbar from '../components/organisms/Navbar';
 import MainBanner from '../components/organisms/MainBanner';
 import TransactionStep from '../components/organisms/TransactionStep';
@@ -11,9 +10,6 @@ import Footer from '../components/organisms/Footer';
 import Head from 'next/head'
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
   return (
     <>
         <Head>

@@ -33,8 +33,6 @@ export default function CheckoutConfirmation() {
         toast.success('Berhasil Checkout');
         router.push('/complete-checkout');
       }
-  
-      console.log(data);
     }
 
     

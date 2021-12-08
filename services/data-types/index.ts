@@ -68,7 +68,7 @@ export interface CheckoutTypes {
 export interface HistoryVoucherTopupTypes {
     category: string;
     coinName: string;
-    coinQuantity: string;
+    coinQuantity: number;
     gameName: string;
     price: number;
     thumbnail: string;

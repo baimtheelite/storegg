@@ -25,7 +25,7 @@ export default function TransactionContent() {
     getMemberTransactionAPI('all');
   }, []);
 
-  const onTabClick = (value) => {
+  const onTabClick = (value: string) => {
     setTab(value);
     getMemberTransactionAPI(value);
   }
@@ -71,7 +71,7 @@ export default function TransactionContent() {
               </thead>
               <tbody id="list_status_item">
                 {transaction.map((item: HistoryTransactionTypes) => (
-                  <TableRow id={item._id} key={item._id} image={item.historyVoucherTopup.thumbnail} title={item.historyVoucherTopup.gameName} category={item.historyVoucherTopup.category} item={`${item.historyVoucherTopup.coinQuantity} ${item.historyVoucherTopup.coinName}`} price={item.historyVoucherTopup.price} status={item.status} />
+                  <TableRow id={item._id} key={item._id} image={item.historyVoucherTopup.thumbnail} title={item.historyVoucherTopup.gameName} category={item.historyVoucherTopup.category} coinQuantity={item.historyVoucherTopup.coinQuantity} coinName={item.historyVoucherTopup.coinName} price={item.historyVoucherTopup.price} status={item.status} />
                 ))}
               </tbody>
             </table>

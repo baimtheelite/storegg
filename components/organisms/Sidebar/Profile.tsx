@@ -17,7 +17,6 @@ export default function Profile() {
   // const getProfileAPI = useCallback(async () => {
   //   const data = await getProfile();
 
-  //   console.log(data.data);
   //   setPlayer(data.data);  
   // }, [getProfile])
   

@@ -1,12 +1,8 @@
-import type { NextPage } from "next";
 import { useCallback, useEffect, useState } from "react";
-import AOS from "aos";
 import TopUpForm from "../../components/organisms/TopUpForm";
 import TopUpItem from "../../components/organisms/TopUpItem";
-import { Header } from "../../stories/Header";
 import Navbar from "../../components/organisms/Navbar";
 import Footer from "../../components/organisms/Footer";
-import { useRouter } from "next/router";
 import { getDetailVoucher, getFeaturedGame } from "../../services/player";
 import { GameItemTypes, NominalsTypes, PaymentTypes } from "../../services/data-types";
 
@@ -73,7 +69,6 @@ interface GetStaticProps {
 export async function getStaticProps({ params } : GetStaticProps) {
   const {id} = params;
   const data = await getDetailVoucher(id);
-  console.log(data);
   return {
     props: {
       dataItem: data.detail,

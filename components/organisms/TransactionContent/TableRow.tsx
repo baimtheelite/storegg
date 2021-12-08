@@ -7,7 +7,8 @@ interface TableRowProps {
     image: string,
     title: string,
     category: string,
-    item: number, 
+    coinQuantity: number, 
+    coinName: string, 
     price: number,
     status: string,
     id: string,
@@ -16,7 +17,7 @@ interface TableRowProps {
 const imgURL = process.env.NEXT_PUBLIC_IMAGE;
 
 export default function TableRow(props: TableRowProps) {
-    const {image, title, category, item, price, status, id} = props;
+    const {image, title, category, coinQuantity, coinName, price, status, id} = props;
     const statusClass = cx({
         "float-start icon-status": true,
         'pending': status === 'pending',
@@ -44,7 +45,7 @@ export default function TableRow(props: TableRowProps) {
         </div>
       </th>
       <td>
-        <p className="fw-medium color-palette-1 m-0">{item} Gold</p>
+        <p className="fw-medium color-palette-1 m-0">{coinQuantity} {coinName}</p>
       </td>
       <td>
         <p className="fw-medium color-palette-1 m-0">{price}</p>

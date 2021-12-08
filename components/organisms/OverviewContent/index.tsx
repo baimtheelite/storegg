@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import React, { useCallback, useEffect, useState } from "react";
-import { JWTPayloadTypes, PlayerTypes, TopupCategoriesTypes } from "../../../services/data-types";
+import { HistoryTransactionTypes, HistoryVoucherTopupTypes, JWTPayloadTypes, PlayerTypes, TopupCategoriesTypes } from "../../../services/data-types";
 import { getHistory} from "../../../services/player";
 import { getMemberOverview } from "../../../services/member";
 import Category from "./Category";
@@ -64,13 +64,14 @@ export default function OverviewContent() {
                 </tr>
               </thead>
               <tbody>
-                { history.map((item) => (
+                { history.map((item: HistoryTransactionTypes) => (
                   <TableRow
                     key={item._id}
                     image={`${IMG}/${item.historyVoucherTopup.thumbnail}`} 
                     title={item.historyVoucherTopup.gameName} 
                     category={item.historyVoucherTopup.category} 
-                    item={item.historyVoucherTopup.coinQuantity} 
+                    coinQuantity={item.historyVoucherTopup.coinQuantity} 
+                    coinName={item.historyVoucherTopup.coinName} 
                     price={item.historyVoucherTopup.price} 
                     status={item.status} 
                   />
@@ -109,7 +110,6 @@ export async function getServerSideProps({req} : getServerSideProps) {
       const jwtToken = Buffer.from(token, 'base64').toString('ascii');    
       const payload: JWTPayloadTypes = jwtDecode(jwtToken);
       const player: PlayerTypes = payload.player;
-      console.log(player);
       
       player.avatar = `${process.env.NEXT_PUBLIC_IMAGE}/${player.avatar}`;
 

@@ -8,7 +8,7 @@ interface ButtonTabProps {
     onClick: () => void
 }
 
-export default function ButtonTab(props) {
+export default function ButtonTab(props: ButtonTabProps) {
     const {title, active, onClick} = props 
     const btnClass = cx({
         'btn btn-status rounded-pill text-sm me-3' : true,

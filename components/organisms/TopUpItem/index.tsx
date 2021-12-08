@@ -4,7 +4,11 @@ interface TopUpItemProps {
     type: 'desktop' | 'mobile',
     thumbnail?: string,
     data: {
-      category: string,
+      name: string, 
+      thumbnail?: string,
+      category: {
+        name: string,
+      },
     }
 }
 

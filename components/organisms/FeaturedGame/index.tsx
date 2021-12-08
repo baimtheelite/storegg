@@ -1,4 +1,4 @@
-import {React, useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import GameItem from "../../molecules/GameItem";
 import axios from "axios";
 import { getFeaturedGame } from "../../../services/player";

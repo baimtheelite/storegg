@@ -6,12 +6,13 @@ import { getGameCategory } from "../services/player";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import router, { useRouter } from "next/router";
+import { CategoryTypes } from "../services/data-types";
 
 export default function SignUpPhoto() {
   const [categories, setCategories] = useState([]);
   const [favorite, setFavorite] = useState('');
-  const [image, setImage] = useState('');
-  const [imagePreview, setImagePreview] = useState(null);
+  const [image, setImage] = useState<any>('');
+  const [imagePreview, setImagePreview] = useState<any>("/");
   const [localForm, setLocalForm] = useState({
     name: '',
     email: '',
@@ -67,7 +68,7 @@ export default function SignUpPhoto() {
                 <div className="mb-20">
                   <div className="image-upload text-center">
                     <label htmlFor="avatar">
-                      {imagePreview ? <img src={imagePreview} className="img-upload" alt="upload" /> : <Image src="/icon/upload.svg" width={120} height={120} alt="upload" />}
+                      {imagePreview === "/" ? <img src={imagePreview} className="img-upload" alt="upload" /> : <Image src="/icon/upload.svg" width={120} height={120} alt="upload" />}
                     </label>
                     <input
                       id="avatar"
@@ -75,7 +76,7 @@ export default function SignUpPhoto() {
                       name="avatar"
                       accept="image/png, image/jpeg"
                       onChange={(e) => {
-                        const img = e.target.files[0];
+                        const img = e.target.files![0];
                          setImagePreview(URL.createObjectURL(img));
                          return setImage(img);
                       }}
@@ -106,7 +107,7 @@ export default function SignUpPhoto() {
                     <option value="" disabled selected>
                       Select Category
                     </option>
-                    {categories.map(category => ( 
+                    {categories.map((category: CategoryTypes) => ( 
                       <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                   </select>
